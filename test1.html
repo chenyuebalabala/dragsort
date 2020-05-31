@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+.sort-num {
+    float: left;
+    width: 30px;
+    border-radius: 3px;
+    background-color: #018bff;
+    overflow: hidden;
+}
+element.style {
+    height: 39px;
+}
+.sort-num-item.active {
+    background-color: rgba(40,99,243,1);
+    color: rgba(255,255,255,1);
+    background: #018BFF;
+}
+.sort-num-item {
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    font-size: 16px;
+}
+.sort-box, .sort-item {
+    border-color: rgba(0,0,0,0.2);
+}
+.sort-box {
+    position: absolute;
+    padding-top: 10px;
+    left: 42px;
+    top: 0;
+    height: 100%;
+    width: 264px;
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.sort-item {
+    margin-left: -1px;
+    margin-top: -1px;
+    border-radius: 0;
+    position: relative;
+    width: 264px;
+    padding: 8px 40px 8px 20px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: solid 1px #cbd5de;
+    word-break: break-all;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.sort-item-handle {
+    position: absolute;
+    right: 11px;
+    top: 50%;
+    margin-top: -6px;
+}
+.sort-handle-line {
+    display: block;
+    width: 19px;
+    height: 2px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    padding-bottom: 3px;
+}
+.sort-handle-line:nth-child(1):before {
+    -webkit-transform-origin: right top;
+    -ms-transform-origin: right top;
+    transform-origin: right top;
+}
+.sort-handle-line:before, .sort-handle-line:after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-color: #bbbdbe;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    background-color: rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body>
+    <div class="row">
+        <div class="sort-num">
+        </div>
+        <div class="col-12">
+                <div id="example1" class="list-group col sort-box">
+                </div>     
+        </div>      
+</div>
+<div class="divider"></div>   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.8.3/Sortable.min.js"></script>
+<script>
+ new Sortable(example1, {
+                        animation: 150,
+                        ghostClass: 'blue-background-class'
+                    });
+
+// $(document).ready(function() {
+// $('.list-group div').bind({
+//     touchstart: function (){
+//         $(this).addClass("sort-num");
+//     },
+//     touchend: function (){
+//         $(this).removeClass("sort-num");
+//     }
+// })
+//     })
+var dataa=[
+   '1','2','3','4'
+]
+var  objhtmll="";
+for(var j=0;j<4;j++){
+   objhtmll += ` <div class="sort-num-item active" style="height: 39px;">`+dataa[j]+`</div> `
+}
+$(".sort-num").html(objhtmll);
+var data=[
+   '选项A','选项B','选项C','选项D'
+]
+var  objhtml="";
+for(var j=0;j<4;j++){
+   objhtml += `<div class="list-group-item sort-item-txt sort-item undefined">`
+                   +data[j]+
+             `<div class="sort-item-handle"> 
+            <span class="sort-handle-line "></span>
+            <span class="sort-handle-line "></span>
+            <span class="sort-handle-line "></span>
+            </div>
+            </div> `
+}
+$(".list-group").html(objhtml);
+</script>
+</body>
+</html>
